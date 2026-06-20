@@ -223,6 +223,124 @@ handwritten-digit-recognition/
 ├── my_digit.png
 └── README.md
 ```
+## Virtual Environment Troubleshooting
+
+### Problem
+
+If you see errors such as:
+
+```text
+ModuleNotFoundError: No module named 'numpy'
+```
+
+or
+
+```text
+ModuleNotFoundError: No module named 'tensorflow'
+```
+
+you are likely using a different virtual environment than the one where the dependencies were installed.
+
+Example:
+
+```text
+(.venv)
+```
+
+and
+
+```text
+(.venv-1)
+```
+
+are different environments.
+
+Packages installed in one environment are not automatically available in another environment.
+
+---
+
+### Check Active Environment
+
+Run:
+
+```powershell
+where python
+```
+
+This displays the Python executable currently being used.
+
+---
+
+### Activate Correct Environment
+
+Deactivate the current environment:
+
+```powershell
+deactivate
+```
+
+Activate the project environment:
+
+```powershell
+.\.venv\Scripts\activate
+```
+
+The terminal should display:
+
+```text
+(.venv)
+```
+
+---
+
+### Verify Installed Packages
+
+Check installed packages:
+
+```powershell
+pip list
+```
+
+You should see:
+
+```text
+numpy
+matplotlib
+tensorflow
+pillow
+```
+
+---
+
+### Reinstall Dependencies
+
+If required, install all project dependencies again:
+
+```powershell
+pip install numpy matplotlib tensorflow pillow
+```
+
+---
+
+### Run the Application
+
+After activating the correct environment:
+
+```powershell
+python main.py
+```
+
+---
+
+### Important Note
+
+Always activate the same virtual environment before running the project:
+
+```powershell
+.\.venv\Scripts\activate
+```
+
+Using a different environment may result in missing package errors.
 
 ---
 
