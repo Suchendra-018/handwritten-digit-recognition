@@ -1,40 +1,85 @@
-# Handwritten Digit Recognition using MNIST Dataset
+# Handwritten Digit Recognition using CNN
 
 ## Project Overview
 
-This project is an AI application that recognizes handwritten digits from images using a Neural Network trained on the MNIST dataset.
+This project is an Artificial Intelligence application that recognizes handwritten digits using a Convolutional Neural Network (CNN) trained on the MNIST dataset.
 
-The model is trained on 60,000 handwritten digit images and tested on 10,000 images. After training, the application can predict digits from both the MNIST dataset and user-provided handwritten images.
+The system can:
 
----
+* Train a CNN model using the MNIST dataset
+* Predict digits from handwritten images
+* Provide confidence scores for predictions
+* Allow users to draw digits using an interactive GUI
+* Detect invalid or unclear inputs
+* Save and load trained models for faster execution
 
-## Features
-
-* Train a Neural Network using the MNIST dataset
-* Achieve approximately 97%–99% accuracy
-* Predict handwritten digits from images
-* Display actual and predicted digits
-* Show confidence score
-* Display prediction status
-* Visualize handwritten digit images
+The model achieves approximately **99.08% test accuracy** on the MNIST dataset.
 
 ---
 
-## Technologies Used
+# Features
 
-* Python
-* TensorFlow / Keras
+* CNN-based handwritten digit recognition
+* Trained on the MNIST dataset
+* Achieves 99.08% test accuracy
+* Interactive drawing canvas using Tkinter
+* Real-time digit prediction
+* Confidence score display
+* Invalid input detection
+* Low-confidence prediction warning
+* Custom image prediction support
+* Model saving and loading using `.keras`
+* Modular project architecture
+
+---
+
+# Technologies Used
+
+### Programming Language
+
+* Python 3.13+
+
+### Libraries
+
+* TensorFlow
+* Keras
 * NumPy
 * Matplotlib
 * Pillow (PIL)
+* Tkinter
 
 ---
 
-## Python Version
+# Project Structure
+
+```text
+handwritten-digit-recognition/
+│
+├── main.py
+├── gui.py
+├── predict.py
+├── digit_model.keras
+│
+├── screenshots/
+│   ├── Gui_Dashboard.png
+│   ├── Gui_Output_1.png
+│   ├── Gui_Output_2.png
+│   ├── Gui_Output_3.png
+│   └── main_py.png
+│
+├── README.md
+└── .gitignore
+```
+
+---
+
+# Python Version
 
 Recommended:
 
+```text
 Python 3.13
+```
 
 Check version:
 
@@ -44,19 +89,7 @@ python --version
 
 ---
 
-## Project Structure
-
-```text
-handwritten-digit-recognition/
-│
-├── main.py
-├── my_digit.png
-└── README.md
-```
-
----
-
-## Create Virtual Environment
+# Create Virtual Environment
 
 Open PowerShell inside the project folder.
 
@@ -75,14 +108,12 @@ Activate virtual environment:
 After activation:
 
 ```text
-(.venv) PS C:\path\to\project>
+(.venv)
 ```
 
 ---
 
-## Install Required Libraries
-
-Install all dependencies:
+# Install Required Libraries
 
 ```powershell
 pip install numpy matplotlib tensorflow pillow
@@ -96,47 +127,46 @@ python -c "import numpy, matplotlib, tensorflow, PIL; print('Libraries Installed
 
 ---
 
-## Running the Project
+# Running the Project
 
-Execute:
+## Train and Evaluate Model
 
 ```powershell
 python main.py
 ```
 
-The application will:
+This will:
 
 1. Load the MNIST dataset
-2. Train the Neural Network
-3. Evaluate model accuracy
-4. Display sample digit predictions
-5. Predict user-provided handwritten images
+2. Train the CNN model
+3. Save the trained model
+4. Evaluate accuracy
+5. Display sample predictions
+6. Predict custom handwritten images
 
 ---
 
-## MNIST Dataset Information
+## Launch GUI Application
 
-Training Images: 60,000
-
-Testing Images: 10,000
-
-Image Size:
-
-```text
-28 × 28 pixels
+```powershell
+python gui.py
 ```
 
-Classes:
+The GUI allows users to:
 
-```text
-0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-```
+1. Draw a digit using the mouse
+2. Click Predict
+3. View prediction results
+4. View confidence scores
+5. Clear the canvas and test again
 
 ---
 
-## Testing with Your Own Handwritten Image
+# Testing with Your Own Handwritten Image
 
-### Step 1: Open Paint
+## Step 1
+
+Open Microsoft Paint.
 
 Press:
 
@@ -154,65 +184,50 @@ Press Enter.
 
 ---
 
-### Step 2: Create Image
-
-Keep:
-
-```text
-White Background
-```
+## Step 2
 
 Use:
 
 ```text
+White Background
 Black Color
 ```
 
 Draw a large handwritten digit.
 
-Example:
+Examples:
 
 ```text
-7
-```
-
-or
-
-```text
+0
 1
-```
-
-or
-
-```text
+3
+5
+7
 8
+9
 ```
 
 ---
 
-### Step 3: Save Image
+## Step 3
 
-Select:
-
-```text
-File → Save As → PNG Picture
-```
-
-Save as:
+Save image as:
 
 ```text
 my_digit.png
 ```
 
----
-
-### Step 4: Place Image
-
-Save the image in the same folder as:
+Format:
 
 ```text
-main.py
+PNG
 ```
+
+---
+
+## Step 4
+
+Place the image in the project folder.
 
 Example:
 
@@ -223,9 +238,123 @@ handwritten-digit-recognition/
 ├── my_digit.png
 └── README.md
 ```
-## Virtual Environment Troubleshooting
 
-### Problem
+---
+
+## Step 5
+
+Run:
+
+```powershell
+python main.py
+```
+
+When prompted:
+
+```text
+Enter image name:
+```
+
+Type:
+
+```text
+my_digit.png
+```
+
+---
+
+# Screenshots
+
+## Main Model Evaluation
+
+```markdown
+![Main Output](screenshots/main_py.png)
+```
+
+## GUI Dashboard
+
+```markdown
+![GUI Dashboard](screenshots/Gui_Dashboard.png)
+```
+
+## Invalid Input Detection
+
+```markdown
+![Invalid Input](screenshots/Gui_Output_1.png)
+```
+
+## Low Confidence Prediction
+
+```markdown
+![Low Confidence](screenshots/Gui_Output_2.png)
+```
+
+## Successful Prediction
+
+```markdown
+![Successful Prediction](screenshots/Gui_Output_3.png)
+```
+
+---
+
+# CNN Architecture
+
+```text
+Input Image (28 × 28)
+        │
+        ▼
+Conv2D (32 Filters)
+        │
+        ▼
+MaxPooling2D
+        │
+        ▼
+Conv2D (64 Filters)
+        │
+        ▼
+MaxPooling2D
+        │
+        ▼
+Flatten
+        │
+        ▼
+Dense (128 Neurons)
+        │
+        ▼
+Dense (10 Classes)
+```
+
+---
+
+# Results
+
+Dataset:
+
+```text
+MNIST Handwritten Digit Dataset
+```
+
+Training Images:
+
+```text
+60,000
+```
+
+Testing Images:
+
+```text
+10,000
+```
+
+Test Accuracy:
+
+```text
+99.08%
+```
+
+---
+
+# Virtual Environment Troubleshooting
 
 If you see errors such as:
 
@@ -239,61 +368,17 @@ or
 ModuleNotFoundError: No module named 'tensorflow'
 ```
 
-you are likely using a different virtual environment than the one where the dependencies were installed.
-
-Example:
-
-```text
-(.venv)
-```
-
-and
-
-```text
-(.venv-1)
-```
-
-are different environments.
-
-Packages installed in one environment are not automatically available in another environment.
-
----
-
-### Check Active Environment
-
-Run:
-
-```powershell
-where python
-```
-
-This displays the Python executable currently being used.
-
----
-
-### Activate Correct Environment
-
-Deactivate the current environment:
-
-```powershell
-deactivate
-```
-
-Activate the project environment:
+activate the correct environment:
 
 ```powershell
 .\.venv\Scripts\activate
 ```
 
-The terminal should display:
+Check active Python:
 
-```text
-(.venv)
+```powershell
+where python
 ```
-
----
-
-### Verify Installed Packages
 
 Check installed packages:
 
@@ -301,135 +386,37 @@ Check installed packages:
 pip list
 ```
 
-You should see:
-
-```text
-numpy
-matplotlib
-tensorflow
-pillow
-```
-
 ---
 
-### Reinstall Dependencies
-
-If required, install all project dependencies again:
-
-```powershell
-pip install numpy matplotlib tensorflow pillow
-```
-
----
-
-### Run the Application
-
-After activating the correct environment:
-
-```powershell
-python main.py
-```
-
----
-
-### Important Note
-
-Always activate the same virtual environment before running the project:
-
-```powershell
-.\.venv\Scripts\activate
-```
-
-Using a different environment may result in missing package errors.
-
----
-
-## Prediction Output
-
-Example:
-
-```text
-Model Accuracy: 97.52%
-
-Predicted Digit : 7
-Confidence      : 99.84%
-Status          : Correct
-```
-
-The application will also display the processed handwritten image.
-
----
-
-## Tips for Better Predictions
+# Tips for Better Predictions
 
 For best results:
 
-* Draw digits large and clear
+* Draw digits clearly
 * Keep the digit centered
 * Use a white background
 * Use black color for the digit
 * Avoid touching image borders
 * Avoid very small handwriting
-* Save as PNG format
-
-Good Example:
-
-```text
-      7
-```
-
-Bad Example:
-
-```text
-7
-```
-
-drawn very small in a large canvas corner.
+* Save images in PNG format
 
 ---
 
-## Neural Network Architecture
+# Future Enhancements
 
-Input Layer:
-
-```text
-28 × 28 Image
-```
-
-Flatten Layer:
-
-```text
-784 Features
-```
-
-Hidden Layer:
-
-```text
-128 Neurons
-ReLU Activation
-```
-
-Output Layer:
-
-```text
-10 Neurons
-Softmax Activation
-```
+* Alphabet Recognition (A-Z)
+* Multi-Digit Recognition
+* Streamlit Web Application
+* Real-Time Webcam Recognition
+* Mobile Application Support
+* Advanced Invalid Input Detection
 
 ---
 
-## Model Performance
+# Author
 
-Typical Accuracy:
+**Suchendra A**
 
-```text
-97% – 99%
-```
+Information Science and Engineering
 
-depending on training and testing conditions.
-
-## Author
-
-Handwritten Digit Recognition using MNIST Dataset
-
-Artificial Intelligence Application for recognizing handwritten digits from images.
+Cambridge Institute of Technology, Bengaluru
