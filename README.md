@@ -267,35 +267,23 @@ my_digit.png
 
 ## Main Model Evaluation
 
-```markdown
 ![Main Output](screenshots/main_py.png)
-```
 
 ## GUI Dashboard
 
-```markdown
 ![GUI Dashboard](screenshots/Gui_Dashboard.png)
-```
 
 ## Invalid Input Detection
 
-```markdown
 ![Invalid Input](screenshots/Gui_Output_1.png)
-```
 
 ## Low Confidence Prediction
 
-```markdown
 ![Low Confidence](screenshots/Gui_Output_2.png)
-```
 
 ## Successful Prediction
 
-```markdown
 ![Successful Prediction](screenshots/Gui_Output_3.png)
-```
-
----
 
 # CNN Architecture
 
