@@ -2,27 +2,61 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
+from tensorflow.keras.models import load_model
 
 from tensorflow.keras.datasets import mnist
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Flatten
+from tensorflow.keras.layers import (
+    Dense,
+    Flatten,
+    Conv2D,
+    MaxPooling2D
+)
 
-# ==========================
 # LOAD DATASET
-# ==========================
+
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
 # Normalize
 x_train = x_train / 255.0
 x_test = x_test / 255.0
 
-# ==========================
+# Reshape for CNN
+x_train = x_train.reshape(-1, 28, 28, 1)
+x_test = x_test.reshape(-1, 28, 28, 1)
+
+
 # BUILD MODEL
-# ==========================
+
 model = Sequential([
-    Flatten(input_shape=(28, 28)),
-    Dense(128, activation='relu'),
-    Dense(10, activation='softmax')
+    Conv2D(
+        32,
+        (3, 3),
+        activation='relu',
+        input_shape=(28, 28, 1)
+    ),
+
+    MaxPooling2D((2, 2)),
+
+    Conv2D(
+        64,
+        (3, 3),
+        activation='relu'
+    ),
+
+    MaxPooling2D((2, 2)),
+
+    Flatten(),
+
+    Dense(
+        128,
+        activation='relu'
+    ),
+
+    Dense(
+        10,
+        activation='softmax'
+    )
 ])
 
 model.compile(
@@ -31,21 +65,31 @@ model.compile(
     metrics=['accuracy']
 )
 
-print("\nTraining Model...\n")
+# TRAIN OR LOAD MODEL
 
-# ==========================
-# TRAIN MODEL
-# ==========================
-model.fit(
-    x_train,
-    y_train,
-    epochs=5,
-    verbose=1
-)
+if os.path.exists("digit_model.keras"):
 
-# ==========================
+    print("\nLoading existing model...\n")
+
+    model = load_model("digit_model.keras")
+
+else:
+
+    print("\nTraining new model...\n")
+
+    model.fit(
+        x_train,
+        y_train,
+        epochs=5,
+        verbose=1
+    )
+
+    model.save("digit_model.keras")
+
+    print("Model saved successfully!")
+
 # EVALUATE MODEL
-# ==========================
+
 loss, accuracy = model.evaluate(
     x_test,
     y_test,
@@ -54,9 +98,8 @@ loss, accuracy = model.evaluate(
 
 print(f"\nModel Accuracy: {accuracy * 100:.2f}%")
 
-# ==========================
 # SHOW MNIST PREDICTIONS
-# ==========================
+
 predictions = model.predict(
     x_test[:9],
     verbose=0
@@ -98,9 +141,8 @@ for i in range(9):
 plt.tight_layout(rect=[0, 0, 1, 0.95])
 plt.show()
 
-# ==========================
 # CUSTOM IMAGE PREDICTION
-# ==========================
+
 
 image_path = input("Enter image name: ")
 
@@ -119,7 +161,7 @@ if os.path.exists(image_path):
 
     img_array = img_array / 255.0
 
-    model_input = img_array.reshape(1, 28, 28)
+    model_input = img_array.reshape(1, 28, 28, 1)
 
     prediction = model.predict(
         model_input,
