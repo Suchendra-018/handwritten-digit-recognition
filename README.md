@@ -32,6 +32,58 @@ The model achieves approximately **99.08% test accuracy** on the MNIST dataset.
 * Modular project architecture
 
 ---
+# Application Interfaces
+
+This project provides two different interfaces built on top of the same CNN prediction engine.
+
+## 1. Desktop Application (Tkinter)
+
+The desktop version is implemented using Tkinter and provides an interactive drawing canvas where users can draw handwritten digits directly using the mouse.
+
+Features:
+
+* Interactive drawing canvas
+* Real-time digit prediction
+* Confidence score display
+* Invalid input detection
+* Low-confidence prediction warning
+* Offline execution without internet access
+
+Run:
+
+```powershell
+python gui.py
+```
+
+This version is designed for local desktop usage and offers the most interactive user experience.
+
+---
+
+## 2. Web Application (Streamlit)
+
+The web version is implemented using Streamlit and provides a browser-based interface for digit recognition.
+
+Features:
+
+* Image upload support
+* Browser-based user interface
+* Uses the same trained CNN model
+* Suitable for cloud deployment
+* Accessible from any device through a web browser
+
+Run locally:
+
+```powershell
+streamlit run app.py
+```
+
+### Why Two Versions?
+
+The desktop application uses Tkinter, which is a desktop GUI framework and cannot be directly deployed to cloud-hosted browser environments.
+
+To enable web deployment, a Streamlit interface was developed that uses the same prediction engine while providing browser accessibility.
+
+Both applications share the same trained CNN model and prediction logic, ensuring consistent results across desktop and web environments.
 
 # Technologies Used
 
@@ -51,14 +103,14 @@ The model achieves approximately **99.08% test accuracy** on the MNIST dataset.
 ---
 
 # Project Structure
-
-```text
 handwritten-digit-recognition/
 │
 ├── main.py
 ├── gui.py
+├── app.py
 ├── predict.py
 ├── digit_model.keras
+├── requirements.txt
 │
 ├── screenshots/
 │   ├── Gui_Dashboard.png
@@ -69,8 +121,6 @@ handwritten-digit-recognition/
 │
 ├── README.md
 └── .gitignore
-```
-
 ---
 
 # Python Version
