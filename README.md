@@ -103,27 +103,30 @@ Both applications share the same trained CNN model and prediction logic, ensurin
 ---
 
 # Project Structure
+## Project Structure
+
+```text
 handwritten-digit-recognition/
 │
-├── app.py                    # Streamlit web application
-├── predict.py                # Prediction logic and model loading
-├── train.py                  # Training script (rename main.py → train.py)
-├── gui.py                    # Tkinter desktop application
+├── app.py                # Streamlit web application
+├── predict.py            # Prediction logic and model loading
+├── main.py               # CNN training script
+├── gui.py                # Tkinter desktop application
 │
-├── digit_model.keras         # Trained CNN model
+├── digit_model.keras     # Trained CNN model
 │
 ├── requirements.txt
-|
+├── .python-version
 ├── README.md
 ├── .gitignore
 │
-├── screenshots/
+└── screenshots/
     ├── Gui_Dashboard.png
     ├── Gui_Output_1.png
     ├── Gui_Output_2.png
     ├── Gui_Output_3.png
     └── main_py.png
----
+```
 
 # Python Version
 
