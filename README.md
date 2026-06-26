@@ -102,7 +102,29 @@ Both applications share the same trained CNN model and prediction logic, ensurin
 
 ---
 
-# Project Structure
+# Screenshots
+
+## Main Model Evaluation
+
+![Main Output](screenshots/main_py.png)
+
+## GUI Dashboard
+
+![GUI Dashboard](screenshots/Gui_Dashboard.png)
+
+## Invalid Input Detection
+
+![Invalid Input](screenshots/Gui_Output_1.png)
+
+## Low Confidence Prediction
+
+![Low Confidence](screenshots/Gui_Output_2.png)
+
+## Successful Prediction
+
+![Successful Prediction](screenshots/Gui_Output_3.png)
+---
+
 ## Project Structure
 
 ```text
@@ -321,28 +343,6 @@ my_digit.png
 ```
 
 ---
-
-# Screenshots
-
-## Main Model Evaluation
-
-![Main Output](screenshots/main_py.png)
-
-## GUI Dashboard
-
-![GUI Dashboard](screenshots/Gui_Dashboard.png)
-
-## Invalid Input Detection
-
-![Invalid Input](screenshots/Gui_Output_1.png)
-
-## Low Confidence Prediction
-
-![Low Confidence](screenshots/Gui_Output_2.png)
-
-## Successful Prediction
-
-![Successful Prediction](screenshots/Gui_Output_3.png)
 
 # CNN Architecture
 
